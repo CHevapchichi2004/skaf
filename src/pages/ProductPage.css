@@ -60,15 +60,21 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: none;
+    transition: all 0.2s ease;
     z-index: 10;
     color: rgb(255 255 255 / 58%);
     outline: none;
+    user-select: none;
 }
 
 .carousel-button:hover {
-    color: rgb(255 255 255 / 70%);
-    transition: none;
+    color: rgb(255 255 255 / 90%);
+    transform: translateY(-50%) scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.carousel-button:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .carousel-button.left {
@@ -87,6 +93,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    padding: 5px 0;
 }
 
 .carousel-item {
@@ -94,29 +101,46 @@
     aspect-ratio: 1/1;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: none;
+    transition: all 0.2s ease;
     overflow: hidden;
     margin-right: 0;
+    border-radius: 8px;
+    position: relative;
 }
 
 .carousel-item.partial {
     flex: 0 0 8%;
     opacity: 0.7;
-    transition: none;
+    transition: all 0.2s ease;
 }
 
 .carousel-item.active {
     border-color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-item:hover {
+    transform: scale(1.02);
+    border-color: #666;
+}
+
+.carousel-item.active:hover {
+    transform: scale(1.05);
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: none;
+    transition: all 0.2s ease;
 }
 
 .carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-item.active img {
     transform: none;
 }
 
@@ -811,4 +835,95 @@
 
 .main-category-image {
     transition: none;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.container.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Мобильные стили для слайдера */
+@media (max-width: 768px) {
+    .category-container {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .large-image-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .right-column {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 3em;
+    }
+
+    .carousel-button.left {
+        left: 5px;
+    }
+
+    .carousel-button.right {
+        right: 5px;
+    }
+
+    .carousel {
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .carousel-item {
+        flex: 0 0 20%;
+        border-radius: 4px;
+    }
+
+    .carousel-item.partial {
+        flex: 0 0 10%;
+    }
+
+    .product-main-title {
+        font-size: 2.5vh;
+        width: 100%;
+    }
+
+    .price-current {
+        font-size: 2.5vh;
+    }
+
+    .price-original {
+        font-size: 1.8vh;
+    }
+
+    .add-to-cart-button {
+        width: 100%;
+        height: 6vh;
+        font-size: 2.5vh;
+    }
+
+    .favorite-button {
+        width: 6vh;
+        height: 6vh;
+        font-size: 4vh;
+    }
 } 

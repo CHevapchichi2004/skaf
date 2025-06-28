@@ -13,7 +13,7 @@
     visibility: visible;
     transition: opacity var(--transition-duration) ease, visibility var(--transition-duration) ease;
 }
-.nav-primary { косяк
+.nav-primary {
     border-bottom: 1px solid #000000;
 } */ 
 
@@ -357,4 +357,24 @@ img {
         font-size: 14px;
         margin: 15px 0;
     }
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.container.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 } 

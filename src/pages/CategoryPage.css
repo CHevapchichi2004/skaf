@@ -1050,13 +1050,24 @@
     object-position: center;
 }
 
-/* Убедимся, что header всегда поверх других элементов */
+/* Конец файла */
+
 .header {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-/* Конец файла */
+.container {
+    width: 100%;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.container.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}

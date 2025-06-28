@@ -25,7 +25,7 @@
 
 
 /* .nav-primary {
-    border-bottom: 1px solid #000000; косяк
+    border-bottom: 1px solid #000000;
 } */
 
 
@@ -274,4 +274,24 @@
     .quantity-controls {
         justify-content: center;
     }
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.container.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }

@@ -1,4 +1,4 @@
-import './MainPage'
+import './MainPage.css'
 import './CartPage.css'
 import Header from '../Components/Header/Header'
 const CartPage: React.FC = () => {
@@ -90,7 +90,7 @@ const CartPage: React.FC = () => {
                             <p>с 11 марта, бесплатно</p>
                         </div>
                     </div>
-                    <a href="#" className="delivery-details">Подробнее о способах доставки</a>
+                    <button type="button" className="delivery-details">Подробнее о способах доставки</button>
                 </div>
             </div>
         </div>

@@ -29,15 +29,15 @@ const Footer = () => {
 					<p>СОЦИАЛЬНЫЕ СЕТИ:</p>
 				</section>
 				<section className="footer-section-networks">
-					<a href="#">
+					<button type="button" className="footer-link">
 						<i className="fa-brands fa-telegram"></i>
-					</a>
-					<a href="#" id="insta">
+					</button>
+					<button type="button" id="insta" className="footer-link">
 						<i className="fa-brands fa-instagram"></i>
-					</a>
-					<a href="#" id="vk">
+					</button>
+					<button type="button" id="vk" className="footer-link">
 						<i className="fa-brands fa-vk"></i>
-					</a>
+					</button>
 				</section>
 				<section className="footer-section-copyright">
 					<p>© 2025 LockerWood. Все права защищены.</p>

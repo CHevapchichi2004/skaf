@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 import ProductCard from '../Components/ProductCard/ProductCard'
+import './MainPage.css'
 import './ProductPage.css'
 import { Link } from 'react-router-dom'
 import Header from '../Components/Header/Header'
+
 enum menuEn {
     descr = 'descr',
     sost='sost',
     dil='dil',
     size='size'
 }
+
 const ProductPage: React.FC = () => {
     const [menu, setMenu] = useState<menuEn>(menuEn.descr)
     const [activeImg, setActiveImg] = useState<number>(0)
@@ -21,6 +24,30 @@ const ProductPage: React.FC = () => {
         './img/chair.jpg',
         './img/sofa.jpg'
     ];
+
+    // Функции для слайдера
+    const nextImage = () => {
+        setActiveImg((prev) => (prev + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setActiveImg((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    // Обработчики клавиш
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.key === 'ArrowLeft') {
+                prevImage();
+            } else if (event.key === 'ArrowRight') {
+                nextImage();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, []);
+
     const menuView = menu === menuEn.descr ? `Lorem ipsum dolor sit amet consectetur. A nulla lacus ac sed ullamcorper vitae at sem elementum. Nunc fringilla sed pellentesque gravida viverra. Quis aenean bibendum semper nullam et. Netus elementum accumsan phasellus ac sem pulvinar. Sit morbi at neque pharetra blandit arcu lectus at turpis. Augue fermentum porta convallis non est non pharetra egestas vehicula. Fermentum sit auctor adipiscing ac. Molestie ornare ut maecenas amet aenean habitant. Auctor amet placerat egestas adipiscing rhoncus egestas.` : menu === menuEn.sost ? (<div className="composition-columns">
                 <div className="column">
                     <p>• Дерево</p>
@@ -43,7 +70,6 @@ const ProductPage: React.FC = () => {
                 </div>
             </div>)
 
-
     return (
         <>
         <Header/>
@@ -59,15 +85,33 @@ const ProductPage: React.FC = () => {
     <div className="category-container">
         <div className="large-image-column">
             <div className="main-image-container">
-                <img src="./img/kit.jpg" alt="Кухни" className="main-category-image"/>
-                <button className="carousel-button left" aria-label="Предыдущая картинка">&lsaquo;</button>
-                <button className="carousel-button right" aria-label="Следующая картинка">&rsaquo;</button>
+                <img src={images[activeImg]} alt="Кухни" className="main-category-image"/>
+                <button 
+                    className="carousel-button left" 
+                    aria-label="Предыдущая картинка"
+                    onClick={prevImage}
+                >
+                    &lsaquo;
+                </button>
+                <button 
+                    className="carousel-button right" 
+                    aria-label="Следующая картинка"
+                    onClick={nextImage}
+                >
+                    &rsaquo;
+                </button>
             </div>
             <div className="carousel">
                 {images.map((item, i) => {
-                    return <div className={`carousel-item ${i === activeImg ? 'active' : ''}`} onClick={() => setActiveImg(i)}>
-                        <img src={item} alt="Миниатюра" />
-                    </div>
+                    return (
+                        <div 
+                            key={i}
+                            className={`carousel-item ${i === activeImg ? 'active' : ''} ${i < activeImg - 2 || i > activeImg + 2 ? 'partial' : ''}`} 
+                            onClick={() => setActiveImg(i)}
+                        >
+                            <img src={item} alt="Миниатюра" />
+                        </div>
+                    )
                 })}
             </div>
         </div>

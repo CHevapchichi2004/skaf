@@ -6,20 +6,32 @@ interface PopCatsProps {
 }
 
 const PopCats: React.FC<PopCatsProps> = ({ scrollClass }) => {
-	const [activeIndex, setActiveIndex] = useState(0);
-	const [categoryItems, setCategoryItems] = useState([
+	const [activeIndex, setActiveIndex] = useState(1);
+	const [categoryItems] = useState([
 		{ id: 1, image: "./img/bed.jpg", alt: "Кровати" },
 		{ id: 2, image: "./img/shkaf.jpg", alt: "Шкафы" },
 		{ id: 3, image: "./img/kit.jpg", alt: "Кухни" },
 		{ id: 4, image: "./img/wal.jpg", alt: "Стенки" },
-		// { id: 5, image: "./img/wal.jpg", alt: "Стенки" },
-		// { id: 6, image: "./img/wal.jpg", alt: "Стенки" },
-		// { id: 7, image: "./img/wal.jpg", alt: "Стенки" },
+		{ id: 5, image: "./img/wal.jpg", alt: "Стенки" },
+		{ id: 6, image: "./img/wal.jpg", alt: "Стенки" },
+		{ id: 7, image: "./img/wal.jpg", alt: "Стенки" },
 	]);
 
 	useEffect(() => {
+		setActiveIndex(Math.floor(categoryItems.length / 2));
+	}, [categoryItems.length]);
+
+	useEffect(() => {
+		// Проверяем, является ли устройство мобильным
+		const isMobile = window.innerWidth <= 768;
+		
+		// На мобильных устройствах не применяем анимации слайдера
+		if (isMobile) {
+			return;
+		}
+
 		const updatePositions = () => {
-			const items = document.querySelectorAll(".category-item");
+			const items = document.querySelectorAll(".popular-section .category-item");
 			items.forEach((item, index) => {
 				const position = index - activeIndex;
 				const element = item as HTMLElement;
@@ -109,10 +121,29 @@ const PopCats: React.FC<PopCatsProps> = ({ scrollClass }) => {
 		};
 
 		updatePositions();
+
+		// Добавляем обработчик изменения размера окна
+		const handleResize = () => {
+			const isMobileNow = window.innerWidth <= 768;
+			if (isMobileNow !== isMobile) {
+				// Если изменился тип устройства, перезапускаем эффект
+				updatePositions();
+			}
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
 	}, [activeIndex]);
 
 	// Добавляем обработчик клика по слайду для переключения
 	const handleSlideClick = (index: number) => {
+		// На мобильных устройствах не применяем анимации слайдера
+		if (window.innerWidth <= 768) {
+			return;
+		}
 		setActiveIndex(index);
 	};
 

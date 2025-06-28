@@ -1,6 +1,6 @@
 import Footer from "../Components/Footer/Footer"
 import Header from "../Components/Header/Header"
-// import './MainPage.css'
+import './MainPage.css'
 import './CategoryPage.css'
 import Filter from "../Components/Filter/Filter"
 import ProductCard from "../Components/ProductCard/ProductCard"
