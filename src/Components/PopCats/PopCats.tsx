@@ -12,9 +12,9 @@ const PopCats: React.FC<PopCatsProps> = ({ scrollClass }) => {
 		{ id: 2, image: "./img/shkaf.jpg", alt: "Шкафы" },
 		{ id: 3, image: "./img/kit.jpg", alt: "Кухни" },
 		{ id: 4, image: "./img/wal.jpg", alt: "Стенки" },
-		{ id: 5, image: "./img/wal.jpg", alt: "Стенки" },
-		{ id: 6, image: "./img/wal.jpg", alt: "Стенки" },
-		{ id: 7, image: "./img/wal.jpg", alt: "Стенки" },
+		// { id: 5, image: "./img/wal.jpg", alt: "Стенки" },
+		// { id: 6, image: "./img/wal.jpg", alt: "Стенки" },
+		// { id: 7, image: "./img/wal.jpg", alt: "Стенки" },
 	]);
 
 	useEffect(() => {
@@ -117,14 +117,13 @@ const PopCats: React.FC<PopCatsProps> = ({ scrollClass }) => {
 	};
 
 	return (
-		<section className={`popular-section ${scrollClass || ''}`}>
-			<div className="katalog_container">
-				<h2 className="katalog_text">НОВИНКИ</h2>
-				<div className="katalog_hr" aria-hidden="true"></div>
-			</div>
+		 <section className="popular-section">
+            <div className="katalog_container">
+                <h2 className="products-title">НОВИНКИ</h2>
+            </div>
 
-			<div className="category-container">
-				{categoryItems.map((item, index) => (
+            <div className="category-container">
+                {categoryItems.map((item, index) => (
 					<article 
 						key={item.id} 
 						className="category-item"
@@ -140,9 +139,12 @@ const PopCats: React.FC<PopCatsProps> = ({ scrollClass }) => {
 						</a>
 					</article>
 				))}
-			</div>
-		</section>
+            </div>  
+        </section>
 	);
 };
 
 export default PopCats;
+
+				
+

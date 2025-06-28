@@ -1,14 +1,13 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import MainBanner from "../Components/MainBanner/MainBanner";
 import PopCats from "../Components/PopCats/PopCats";
-import Advantages from "../Components/Advantages/Advantages";
 import Popular from "../Components/Popular/Popular";
-import Stocks from "../Components/Stocks/Stocks";
 import Reviews from "../Components/Reviews/Reviews";
 import Footer from "../Components/Footer/Footer";
 import "./MainPage.css";
 import HeadMeta from "./../Components/HeadMeta/HeadMeta";
 import Header from "../Components/Header/Header";
+import AboutUs from "../Components/AboutUs/AboutUs";
 const MainPage = () => {
 	const [scrollClass, setScrollClass] = useState("scroll-1");
 
@@ -59,16 +58,14 @@ const MainPage = () => {
 				keywords="мебель, шкафы, кровати, кухни, стенки, интерьер"
 			/>
 			<Header />
-			<main className={scrollClass}>
+			<main id="scrolled" className={scrollClass}>
 				<MainBanner />
 
 				<PopCats scrollClass={scrollClass} />
 
-				<Advantages />
+				<AboutUs/>
 
 				<Popular />
-
-				<Stocks />
 
 				<Reviews />
 				<Footer />

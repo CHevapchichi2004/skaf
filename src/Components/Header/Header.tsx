@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-// import "../Header/Header.css";
-
+import { Link } from "react-router-dom";
 const Header: FC = () => {
 	const containterRef = useRef<HTMLDivElement>(null);
 	const [scrolled, setScrolled] = useState<boolean>(false);
@@ -28,7 +27,7 @@ const Header: FC = () => {
 			>
 				<nav className="main-nav" aria-label="Основная навигация">
 					<div className="nav-primary container_2">
-						<a href="Index.html" className="nav-link"></a>
+						<Link to="/" className="nav-link" id="header_logo"/>
 						<a
 							onMouseEnter={() => setSub(true)}
 							onMouseLeave={() => setSub(false)}
@@ -55,20 +54,20 @@ const Header: FC = () => {
 						>
 							КОНТАКТЫ
 						</a>
-						<a href="#" className="nav-link">
+						<Link to="/" className="nav-link">
 							АКЦИИ
-						</a>
+						</Link>
 						<a href="#" className="nav-link">
 							НОВИНКИ
 						</a>
-						<a href="reviews.html" className="nav-link">
+						<Link to="review" className="nav-link">
 							ОТЗЫВЫ
-						</a>
+						</Link>
 
 						<div className="icons-container">
-							<a href="cart.html" id="heart">
+							<Link to="cart.html" id="heart">
 								<i className="fa-regular fa-heart"></i>
-							</a>
+							</Link>
 							<div className="phone-container">
 								<a href="tel:+79999999999" id="phone">
 									<i className="fa-solid fa-phone"></i>
@@ -85,24 +84,24 @@ const Header: FC = () => {
 						className={`nav-secondary container_2 ${sub ? "active" : ""}`}
 						aria-label="Подкатегории"
 					>
-						<a href="#" className="nav-link">
+						<Link to="/category/closets" className="nav-link">
 							Шкафы
-						</a>
-						<a href="#" className="nav-link">
+						</Link>
+						<Link to="/category/kitchens" className="nav-link">
 							Кухни
-						</a>
-						<a href="#" className="nav-link">
+						</Link>
+						<Link to="/category/walls" className="nav-link">
 							Стенки
-						</a>
-						<a href="#" className="nav-link">
+						</Link>
+						<Link to="/category/wardrobes" className="nav-link">
 							Прихожие
-						</a>
-						<a href="#" className="nav-link">
+						</Link>
+						<Link to="/category/bedrooms" className="nav-link">
 							Спальни
-						</a>
-						<a href="#" className="nav-link">
+						</Link>
+						<Link to="/category/kidRooms" className="nav-link">
 							Детские
-						</a>
+						</Link>
 						<input type="text" placeholder="Поиск" className="search-input" />
 						<i className="search-icon"></i>
 					</div>

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface PopCardProps {
 	title: string;
@@ -9,14 +10,14 @@ interface PopCardProps {
 
 const PopCard: FC<PopCardProps> = ({ title, description, img, price }) => {
 	return (
-		<a href="product.html" className="product-card">
+		<Link to="product" className="product-card">
 			<div className="product-image">
 				<img src={img} alt="Фото продукта" />
 			</div>
 			<h3 className="product-title">{title}</h3>
 			<p className="product-description">{description}</p>
 			<span className="product-price">{price} руб</span>
-		</a>
+		</Link>
 	);
 };
 
